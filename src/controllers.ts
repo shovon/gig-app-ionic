@@ -77,7 +77,11 @@ class PostingsCtrl {
       showFilterBar() {
         filterBarInstance = $ionicFilterBar.show({
           update(filteredItems, filterText) {
-            console.log(filterText);
+            if (filterText) {
+              $scope.postings = dataService.searchPostings(filterText);
+            } else {
+              $scope.postings = dataService.getPostings();
+            }
           }
         });
       }

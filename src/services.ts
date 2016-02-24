@@ -99,6 +99,17 @@ class DataService {
       posting.postingId === parseInt(postingId.toString(), 10)
     )[0] || null;
   }
+
+  private matchQuery(query: string, content: string): boolean {
+    return new RegExp(query.split('').join('(\.+)?'), 'i').test(content);
+  }
+
+  searchPostings(query: string): Posting[] {
+    return this.postings.filter((posting) => {
+      return this.matchQuery(query, posting.title) ||
+        this.matchQuery(query, posting.description);
+    });
+  }
 }
 
 angular.module('starter.services', [])
