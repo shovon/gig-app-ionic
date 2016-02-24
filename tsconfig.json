@@ -2,8 +2,7 @@
   "compilerOptions": {
     "module": "commonjs",
     "noImplicitAny": true,
-    "outDir": "./www/js",
-    "jsx": "react"
+    "outDir": "./www/js"
   },
   "exclude": [
     "node_modules"
