@@ -6,6 +6,10 @@
   </ion-nav-buttons>
 
   <ion-content>
-    <h1>Postings</h1>
+    <ion-list>
+      <ion-item ng-repeat="posting in postings" href="#/app/postings/{{posting.postingId}}">
+        {{posting.title}}
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>

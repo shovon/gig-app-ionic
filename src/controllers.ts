@@ -59,19 +59,19 @@ class AppCtrl {
 ////////////////////////////////////////////////////////////////////////////////
 
 interface PostingsCtrlScope extends angular.IScope {
-
+  postings: Posting[];
 }
-
 
 class PostingsCtrl {
   static $inject = [ '$scope', '$ionicFilterBar', 'dataService' ];
 
   constructor(
     $scope: PostingsCtrlScope,
-    // TODO: give $ionicFilterBar a type.
     $ionicFilterBar: IonicFilterBar,
     dataService: DataService
   ) {
+    $scope.postings = dataService.getPostings();
+
     let filterBarInstance: () => void;
     _.assign($scope, {
       showFilterBar() {
@@ -87,14 +87,23 @@ class PostingsCtrl {
 
 ////////////////////////////////////////////////////////////////////////////////
 
+interface PostingCtrlScope extends angular.IScope {
+  posting: Posting;
+}
+
+interface PostingStateParams extends ng.ui.IStateParamsService {
+  postingId: string;
+}
+
 class PostingCtrl {
-  static $inject = [ '$scope', '$stateParams' ];
+  static $inject = [ '$scope', '$stateParams', 'dataService' ];
 
   constructor(
-    $scope: angular.IScope,
-    $stateParams: ng.ui.IStateParamsService
+    $scope: PostingCtrlScope,
+    $stateParams: PostingStateParams,
+    dataService: DataService
   ) {
-
+    $scope.posting = dataService.getPosting($stateParams.postingId);
   }
 }
 

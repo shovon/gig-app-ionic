@@ -41,15 +41,6 @@ angular.module('starter', [
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
-
   .state('app.postings', {
     url: '/postings',
     views: {
@@ -65,7 +56,7 @@ angular.module('starter', [
     views: {
       'menuContent': {
         templateUrl: 'templates/posting.html',
-        controller: 'PlaylistCtrl'
+        controller: 'PostingCtrl'
       }
     }
   });

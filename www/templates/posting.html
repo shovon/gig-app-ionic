@@ -1,5 +1,11 @@
 <ion-view view-title="Playlist">
-  <ion-content>
-    <h1>Posting</h1>
+  <ion-content padding="true">
+    <h2>{{posting.title}}</h2>
+    <p><span class="posting-date">Posted on {{posting.postingDate.toString()}}</span></p>
+    <p>{{posting.description}}</p>
+    <p ng-switch on="posting.compensation.type">
+      <span class='posting-compensation' ng-switch-when="hourly">${{posting.compensation.amount}} per hour</span>
+      <span class='posting-compensation' ng-switch-when="forwork">${{posting.compensation.amount}} for work</span>
+    </p>
   </ion-content>
 </ion-view>
