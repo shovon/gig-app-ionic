@@ -10,7 +10,8 @@ angular.module('starter', [
   'ionic',
   'starter.controllers',
   'starter.services',
-  'jett.ionic.filter.bar'
+  'jett.ionic.filter.bar',
+  'angularMoment'
 ])
 
 .run(function($ionicPlatform: ionic.platform.IonicPlatformService) {

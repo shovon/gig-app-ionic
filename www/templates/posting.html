@@ -1,7 +1,12 @@
 <ion-view view-title="Playlist">
   <ion-content padding="true">
     <h2>{{posting.title}}</h2>
-    <p><span class="posting-date">Posted on {{posting.postingDate.toString()}}</span></p>
+    <p>
+      <span class="posting-date">
+        Posted
+        <span am-time-ago="posting.postingDate"></span>
+      </span>
+    </p>
     <p>{{posting.description}}</p>
     <p ng-switch on="posting.compensation.type">
       <span class='posting-compensation' ng-switch-when="hourly">${{posting.compensation.amount}} per hour</span>

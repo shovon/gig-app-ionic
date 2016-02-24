@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "lodash": "^4.5.1",
+    "angular-moment": "^0.10.3",
     "moment": "^2.11.2"
   }
 }
