@@ -70,7 +70,10 @@ class PostingsCtrl {
     $ionicFilterBar: IonicFilterBar,
     dataService: DataService
   ) {
-    $scope.postings = dataService.getPostings();
+    dataService.getPostings().then(postings => {
+      $scope.postings = postings;
+      $scope.$apply();
+    });
 
     let filterBarInstance: () => void;
     _.assign($scope, {
@@ -78,9 +81,16 @@ class PostingsCtrl {
         filterBarInstance = $ionicFilterBar.show({
           update(filteredItems, filterText) {
             if (filterText) {
-              $scope.postings = dataService.searchPostings(filterText);
+              // $scope.postings = dataService.searchPostings(filterText);
+              dataService.searchPostings(filterText).then(postings => {
+                $scope.postings = postings;
+                $scope.$apply();
+              });
             } else {
-              $scope.postings = dataService.getPostings();
+              dataService.searchPostings(filterText).then(postings => {
+                $scope.postings = postings;
+                $scope.$apply();
+              })
             }
           }
         });
@@ -107,7 +117,9 @@ class PostingCtrl {
     $stateParams: PostingStateParams,
     dataService: DataService
   ) {
-    $scope.posting = dataService.getPosting($stateParams.postingId);
+    dataService.getPosting($stateParams.postingId).then(posting => {
+      $scope.posting = posting;
+    })
   }
 }
 
