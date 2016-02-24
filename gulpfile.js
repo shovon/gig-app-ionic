@@ -7,6 +7,7 @@ var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
 var typescript = require('gulp-tsc');
+var path = require('path');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
@@ -18,7 +19,8 @@ gulp.task('default', ['sass']);
 gulp.task('ts', function () {
   gulp.src(paths.ts)
     .pipe(typescript({
-      emitError: false
+      emitError: false,
+      tscPath: path.resolve(__dirname, 'node_modules', '.bin', 'tsc')
     }))
     .pipe(gulp.dest('www/js'));
 });
@@ -36,9 +38,12 @@ gulp.task('sass', function(done) {
     .on('end', done);
 });
 
+gulp.task('compile', function () {
+  gulp.start('ts', 'sass');
+});
+
 function watchNoTS() {
   gulp.watch(paths.sass, ['sass']);
-
 }
 
 gulp.task('watch', function() {

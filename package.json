@@ -3,7 +3,8 @@
   "version": "1.1.1",
   "description": "An Ionic project",
   "scripts": {
-    "postinstall": "tsd install"
+    "postinstall": "tsd install",
+    "compile": "gulp compile"
   },
   "dependencies": {
     "gulp": "^3.5.6",
@@ -15,10 +16,11 @@
   "devDependencies": {
     "bower": "^1.7.7",
     "gulp": "^3.9.1",
-    "gulp-tsc": "^1.1.4",
+    "gulp-tsc": "^1.1.3",
     "gulp-util": "^2.2.14",
     "shelljs": "^0.3.0",
-    "tsd": "^0.6.5"
+    "tsd": "^0.6.5",
+    "typescript": "^1.8.2"
   },
   "cordovaPlugins": [
     "cordova-plugin-device",
